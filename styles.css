@@ -1,68 +1,74 @@
-body {
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: #0b0c10;
     color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   
+  /* CONTENEDOR GENERAL */
   .screen {
     display: none;
-    padding: 50px;
+    max-width: 800px;
+    width: 90%;
+    padding: 40px;
     animation: fade 1.5s ease;
   }
   
   .screen.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
+  /* BOTONES */
   button {
     background: #ff4d6d;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 22px;
     margin: 10px;
     color: white;
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 16px;
   }
   
   button:hover {
     background: #ff758f;
+    transform: scale(1.05);
   }
   
-  .music {
-    display: block;
-    margin: 20px;
-    color: #f5c518;
-    text-decoration: none;
-  }
-  
-  canvas {
-    margin-top: 20px;
-  }
-  
-  @keyframes fade {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-  
-  /* estrellas */
-  .stars {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    background: url('https://www.transparenttextures.com/patterns/stardust.png');
-    z-index: -1;
-  }
-
   button:disabled {
     background: #555;
     cursor: not-allowed;
     opacity: 0.6;
   }
   
+  /* LINK MUSICA */
+  .music {
+    display: block;
+    margin: 20px 0;
+    color: #f5c518;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .music:hover {
+    color: #ffd95c;
+  }
+  
+  /* ECUACIONES */
   .equation {
     font-size: 28px;
     margin: 20px 0;
@@ -70,27 +76,32 @@ body {
   }
   
   .dirac {
-    font-size: 60px;
+    font-size: 70px;
     margin: 30px 0;
     color: #ff4d6d;
   }
   
-  .hidden {
-    display: none;
-    animation: fade 1.5s ease;
-  }
-
+  /* CORAZÓN */
   .heart-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 20px;
   }
   
+  /* BOTON OCULTO */
   .hidden-btn {
     display: none;
     margin-top: 20px;
   }
   
+  /* TEXTO OCULTO */
+  .hidden {
+    display: none;
+    animation: fade 1.5s ease;
+  }
+  
+  /* LUNA */
   .moon {
     position: fixed;
     top: 60px;
@@ -110,7 +121,7 @@ body {
     100% { transform: translateY(0px); }
   }
   
-  /* estrellas animadas */
+  /* ESTRELLAS */
   .stars {
     width: 100%;
     height: 100vh;
@@ -123,6 +134,24 @@ body {
   @keyframes moveStars {
     from { background-position: 0 0; }
     to { background-position: 1000px 1000px; }
+  }
+  
+  /* ANIMACION FADE */
+  @keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  .layers {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap; /* para que en móvil bajen */
+  }
+  
+  .layer-btn {
+    min-width: 120px;
   }
   
   

@@ -11,7 +11,7 @@ function nextScreen(id) {
   document.getElementById(id).classList.add("active");
 }
 
-function showLayer(type) {
+function showLayer(type, event) {
     const text = {
       divertida: "Tu risa ilumina más que cualquier luna llena.",
       fuerte: "Tienes una fuerza que admiro profundamente.",
@@ -22,6 +22,8 @@ function showLayer(type) {
   
     // Marcamos esa capa como vista
     layersClicked[type] = true;
+    event.target.style.background = "#f5c518";
+    event.target.style.color = "#111";
   
     // Verificamos si ya dio clic en las 3
     if (layersClicked.divertida && layersClicked.fuerte && layersClicked.misteriosa) {

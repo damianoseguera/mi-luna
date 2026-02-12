@@ -25,9 +25,11 @@
   <h2>Shrek decía que los ogros tienen capas 🧅</h2>
   <p>Y tú… mi Fiona, tienes más capas de las que imaginas.</p>
 
-  <button onclick="showLayer('divertida')">Divertida</button>
-  <button onclick="showLayer('fuerte')">Fuerte</button>
-  <button onclick="showLayer('misteriosa')">Misteriosa</button>
+  <div class="layers">
+    <button class="layer-btn" onclick="showLayer('divertida', event)">Divertida</button>
+    <button class="layer-btn" onclick="showLayer('fuerte', event)">Fuerte</button>
+    <button class="layer-btn" onclick="showLayer('misteriosa', event)">Misteriosa</button>
+  </div>
 
   <p id="layerText"></p>
 
