@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>La Luna y la Fórmula</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="stars"></div>
+<div class="moon"></div>
+
+<div class="screen active" id="screen1">
+  <h1>Dicen que la luna no brilla por sí sola...</h1>
+  <p>Pero cuando aparece, cambia toda la noche.</p>
+
+  <a href="https://www.youtube.com/watch?v=Z2Vu0NZ6DnE" target="_blank" class="music">
+    🎧 Escucha esta canción mientras recorres esto
+  </a>
+
+  <button onclick="nextScreen('screen2')">Continuar</button>
+</div>
+
+<div class="screen" id="screen2">
+  <h2>Shrek decía que los ogros tienen capas 🧅</h2>
+  <p>Y tú… mi Fiona, tienes más capas de las que imaginas.</p>
+
+  <button onclick="showLayer('divertida')">Divertida</button>
+  <button onclick="showLayer('fuerte')">Fuerte</button>
+  <button onclick="showLayer('misteriosa')">Misteriosa</button>
+
+  <p id="layerText"></p>
+
+  <button id="toScreen3" onclick="nextScreen('screen3')" disabled>Siguiente</button>
+</div>
+
+<div class="screen" id="screen3">
+  <h2>¿Sabías que existe una ecuación que dibuja un corazón?</h2>
+
+  <p class="equation">
+    (x² + y² − 1)³ − x²y³ = 0
+  </p>
+
+  <button id="drawBtn" onclick="revealHeart()">Descubrir qué dibuja</button>
+
+  <div class="heart-container">
+    <canvas id="heartCanvas" width="400" height="400"></canvas>
+  </div>
+
+  <p id="mathText"></p>
+
+  <button id="toScreen4" class="hidden-btn" onclick="nextScreen('screen4')">
+    Continuar
+  </button>
+</div>
+
+<div class="screen" id="screen4">
+  <h2>¿Conoces esta ecuación?</h2>
+
+<p class="dirac">
+(i∂-m)ψ=0
+</p>
+
+<button onclick="showDiracExplanation()">Explícame</button>
+
+<div id="diracText" class="hidden">
+  <p>
+    Es la ecuación de Dirac, más conocida como la ecuación del amor<br>
+    Gracias a ésta, se describe el fenómeno de Entrelazamiento Cuántico:
+  </p>
+
+  <p>
+    "Si dos sistemas interactúan uno con el otro durante un cierto<br>
+    periodo de tiempo y luego se separan, siguen influyendo<br>
+    el uno sobre el otro, a pesar de los kilómetros de distancia, de los años luz."
+  </p>
+
+  <p>
+    Dos partículas que en algún momento estuvieron unidas,<br>
+    siguen estando de algún modo relacionadas. No importa la distancia<br>
+    entre ambas, nanómetros o extremos opuestos del universo,<br>
+    la conexión entre ellas sigue siendo instantánea.
+  </p>
+
+  <p>
+    Simboliza una conexión eterna<br>
+    influyendo uno en el otro sin importar<br>
+    las barreras, distancia o tiempo
+  </p>
+
+  <p>
+    Así me siento contigo, pese a lo que suceda,<br>
+    pase el tiempo o nos separemos más, siempre estás presente en mi...
+  </p>
+</div>
+
+<button id="finalBtn" onclick="finalMessage()" disabled>🌙</button>
+<p id="finalText"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

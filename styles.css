@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0b0c10;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .screen {
+    display: none;
+    padding: 50px;
+    animation: fade 1.5s ease;
+  }
+  
+  .screen.active {
+    display: block;
+  }
+  
+  button {
+    background: #ff4d6d;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background: #ff758f;
+  }
+  
+  .music {
+    display: block;
+    margin: 20px;
+    color: #f5c518;
+    text-decoration: none;
+  }
+  
+  canvas {
+    margin-top: 20px;
+  }
+  
+  @keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  /* estrellas */
+  .stars {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    z-index: -1;
+  }
+
+  button:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  .equation {
+    font-size: 28px;
+    margin: 20px 0;
+    color: #f5c518;
+  }
+  
+  .dirac {
+    font-size: 60px;
+    margin: 30px 0;
+    color: #ff4d6d;
+  }
+  
+  .hidden {
+    display: none;
+    animation: fade 1.5s ease;
+  }
+
+  .heart-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .hidden-btn {
+    display: none;
+    margin-top: 20px;
+  }
+  
+  .moon {
+    position: fixed;
+    top: 60px;
+    right: 80px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle at 30% 30%, #fff, #ccc 60%, #999);
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(255,255,255,0.6);
+    z-index: -1;
+    animation: floatMoon 6s ease-in-out infinite;
+  }
+  
+  @keyframes floatMoon {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  /* estrellas animadas */
+  .stars {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation: moveStars 60s linear infinite;
+    z-index: -2;
+  }
+  
+  @keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
+  }
+  
+  
+  
