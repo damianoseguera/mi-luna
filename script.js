@@ -68,9 +68,17 @@ function revealHeart() {
 
     points.push({
       x: width / 2 + x * 9,
-      y: height / 2 - y * 9
+      y: height / 2 - y * 9,
+      baseBrightness: Math.random() * 0.4 + 0.5,  // brillo base distinto
+      speed: Math.random() * 0.02 + 0.01,         // ritmo distinto
+      offset: Math.random() * Math.PI * 2         // fase distinta
     });
+
   }
+
+  // Elegimos una estrella especial (puede ser la del centro inferior)
+  const specialIndex = Math.floor(points.length * 0.75);
+  points[specialIndex].isSpecial = true;
 
   let index = 0;
 
@@ -78,11 +86,15 @@ function revealHeart() {
     if (index < points.length) {
       const p = points[index];
 
-      // Estrella pequeña y sutil
-      ctx.fillStyle = "rgba(255,255,255,0.9)";
+      // Guardamos brillo base para cada estrella
+      p.brightness = Math.random() * 0.5 + 0.5;
+
+      // Estrella pequeña
+      ctx.fillStyle = "rgba(255,255,255," + p.brightness + ")";
       ctx.beginPath();
       ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
       ctx.fill();
+
 
       // Línea constelación fina
       if (index > 0) {
@@ -107,9 +119,47 @@ function revealHeart() {
 
       document.getElementById("toScreen4").style.display = "inline-block";
 
-      shootStar(); // ahora ya no borra nada
+      startTwinkle(points);  // ✨ activamos parpadeo
+      shootStar();           // 🌠 pasa la estrella fugaz
     }
   }
+
+function startTwinkle(points) {
+  const canvas = document.getElementById("heartCanvas");
+  const ctx = canvas.getContext("2d");
+
+  let time = 0;
+
+  function twinkle() {
+
+    time += 0.02;
+
+    points.forEach(p => {
+
+      // Oscilación suave tipo seno
+      let brightness =
+        p.baseBrightness +
+        Math.sin(time * (p.speed * 100) + p.offset) * 0.15;
+
+      // Si es la estrella especial, apenas más brillante
+      if (p.isSpecial) {
+        brightness += 0.15;
+      }
+
+      brightness = Math.min(1, Math.max(0.3, brightness));
+
+      ctx.fillStyle = "rgba(255,255,255," + brightness + ")";
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(twinkle);
+  }
+
+  twinkle();
+}
+
 
   animateStars();
   heartRevealed = true;
