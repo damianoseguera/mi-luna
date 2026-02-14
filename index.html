@@ -7,6 +7,19 @@
 </head>
 <body>
 
+<div id="introScreen" class="intro-screen">
+  <div class="intro" id="introText">
+    Hice esto para ti.<br>
+    No es perfecto, pero está hecho para alguien que si lo es.<br>
+    Es una forma de decirte algo.<br>
+    Sigue el <span class="highlight">camino</span>.
+    <br><br>
+    <button class="intro-button" onclick="startExperience()">
+      continuar →
+    </button>
+  </div>
+</div>
+
 <div class="stars"></div>
 <div class="moon"></div>
 
@@ -111,8 +124,16 @@
   </p>
 </div>
 
-<button id="finalBtn" onclick="finalMessage()" disabled>🌙</button>
-<p id="finalText"></p>
+<button id="finalBtn" onclick="goToFinalScreen()" disabled>Por último...</button>
+</div>
+
+<div class="screen" id="screenFinal">
+  <div class="final-container">
+    <p id="finalText" class="final-text"></p>
+    <div class="final-moon">
+      <img src="moon.png" alt="Luna">
+    </div>
+  </div>
 </div>
 
 <script src="script.js"></script>

@@ -209,4 +209,98 @@ canvas {
   top: 0;
   left: 0;
 }
-  
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.intro {
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.85);
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.highlight {
+  color: white;
+  text-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+.intro-button {
+  margin-top: 30px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.8);
+  padding: 8px 20px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.intro-button:hover {
+  border-color: white;
+  color: white;
+}
+
+.final-container {
+  text-align: center;
+}
+
+.final-text {
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  animation: fade 2s ease;
+}
+
+.final-moon {
+  width: 220px;
+  aspect-ratio: 1 / 1;   /* 🔥 obliga a que sea cuadrado perfecto */
+  margin: 0 auto;
+  position: relative;
+  animation: breathe 6s ease-in-out infinite;
+}
+
+.final-moon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* 🔥 mantiene proporción sin deformar */
+  display: block;
+}
+
+/* HALO SUAVE */
+.final-moon::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.18) 0%,
+    rgba(255,255,255,0.08) 40%,
+    transparent 70%
+  );
+  z-index: -1;
+  animation: glow 6s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+@keyframes breathe {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}

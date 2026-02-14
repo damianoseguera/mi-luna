@@ -209,5 +209,36 @@ function showDiracExplanation() {
 
 function finalMessage() {
   document.getElementById("finalText").innerText =
-    "Gracias por existir en mi universo 🌙";
+    "Gracias por existir en mi universo 🌙\n\Yo si te quiero deveritas deveritas 🌻";
+}
+
+function goToFinalScreen() {
+
+  // Oculta todas las pantallas
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+
+  // Activa la pantalla final
+  document.getElementById("screenFinal").classList.add("active");
+
+  // Oculta la luna flotante de la derecha
+  document.querySelector(".moon").style.display = "none";
+
+  // Muestra mensaje
+  finalMessage();
+}
+
+window.onload = function() {
+  const intro = document.getElementById("introText");
+  intro.style.opacity = 1;
+};
+
+function startExperience() {
+  const introScreen = document.getElementById("introScreen");
+
+  introScreen.style.transition = "opacity 1.5s ease";
+  introScreen.style.opacity = 0;
+
+  setTimeout(() => {
+    introScreen.style.display = "none";
+  }, 1500);
 }
