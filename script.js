@@ -14,7 +14,7 @@ function nextScreen(id) {
 function showLayer(type, event) {
     const text = {
       divertida: "Tu risa ilumina más que cualquier luna llena.",
-      fuerte: "Tienes una fuerza que admiro profundamente.",
+      fuerte: "Tienes una fortaleza que admiro profundamente.",
       misteriosa: "Hay algo en ti que siempre quiero seguir descubriendo."
     };
   
@@ -115,7 +115,7 @@ function revealHeart() {
     } else {
 
       document.getElementById("mathText").innerText =
-        "Algunos dirían que es matemática… yo diría que es la constelación exacta de lo que siento por ti.";
+        "Algunos dirían que es matemática… yo diría que es la forma exacta de lo que siento por ti.";
 
       document.getElementById("toScreen4").style.display = "inline-block";
 
@@ -166,27 +166,33 @@ function startTwinkle(points) {
 }
 
 function shootStar() {
-  const canvas = document.getElementById("heartCanvas");
+
+  const canvas = document.getElementById("starCanvas");
   const ctx = canvas.getContext("2d");
 
   let x = -50;
-  let y = 60;
+  let y = 80;
 
   function animate() {
 
-    ctx.strokeStyle = "rgba(255,255,255,0.8)";
-    ctx.lineWidth = 1.5;
+    // Limpiamos SOLO la capa de la estrella
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = "rgba(255,255,255,0.9)";
+    ctx.lineWidth = 2;
 
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.lineTo(x - 15, y - 8);
+    ctx.lineTo(x - 20, y - 10);
     ctx.stroke();
 
-    x += 6;
-    y += 3;
+    x += 8;
+    y += 4;
 
     if (x < canvas.width + 50) {
       requestAnimationFrame(animate);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
   }
 

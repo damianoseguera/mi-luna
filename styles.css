@@ -198,4 +198,15 @@ canvas {
   background: transparent;
 }
 
+.canvas-container {
+  position: relative;
+  width: 600px;
+  height: 500px;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
   
