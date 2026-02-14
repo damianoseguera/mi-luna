@@ -42,9 +42,9 @@ function revealHeart() {
 
   ctx.clearRect(0, 0, width, height);
 
-  // Dibujar ejes
-  ctx.strokeStyle = "rgba(255,255,255,0.2)";
-  ctx.lineWidth = 1;
+  // Ejes sutiles
+  ctx.strokeStyle = "rgba(255,255,255,0.08)";
+  ctx.lineWidth = 0.8;
 
   ctx.beginPath();
   ctx.moveTo(0, height / 2);
@@ -58,7 +58,7 @@ function revealHeart() {
 
   // Generar puntos del corazón
   let points = [];
-  for (let t = 0; t < Math.PI * 2; t += 0.08) {
+  for (let t = 0; t < Math.PI * 2; t += 0.1) {
     const x = 16 * Math.pow(Math.sin(t), 3);
     const y =
       13 * Math.cos(t) -
@@ -67,8 +67,8 @@ function revealHeart() {
       Math.cos(4 * t);
 
     points.push({
-      x: width / 2 + x * 10,
-      y: height / 2 - y * 10
+      x: width / 2 + x * 9,
+      y: height / 2 - y * 9
     });
   }
 
@@ -76,29 +76,18 @@ function revealHeart() {
 
   function animateStars() {
     if (index < points.length) {
-
       const p = points[index];
 
-      // Glow estrella
-      const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 8);
-      glow.addColorStop(0, "rgba(255,255,255,0.9)");
-      glow.addColorStop(1, "rgba(255,255,255,0)");
-
-      ctx.fillStyle = glow;
+      // Estrella pequeña y sutil
+      ctx.fillStyle = "rgba(255,255,255,0.9)";
       ctx.beginPath();
-      ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
       ctx.fill();
 
-      // Punto central
-      ctx.fillStyle = "#ffffff";
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Conectar constelación
+      // Línea constelación fina
       if (index > 0) {
-        ctx.strokeStyle = "rgba(255, 77, 109, 0.5)";
-        ctx.lineWidth = 1.2;
+        ctx.strokeStyle = "rgba(255,255,255,0.4)";
+        ctx.lineWidth = 0.7;
         ctx.beginPath();
         ctx.moveTo(points[index - 1].x, points[index - 1].y);
         ctx.lineTo(p.x, p.y);
@@ -106,8 +95,11 @@ function revealHeart() {
       }
 
       index++;
-      requestAnimationFrame(animateStars);
 
+      // MÁS LENTO (aquí controlas la velocidad)
+      setTimeout(() => {
+        requestAnimationFrame(animateStars);
+      }, 80); // antes era casi inmediato
     } else {
 
       document.getElementById("mathText").innerText =
@@ -115,7 +107,7 @@ function revealHeart() {
 
       document.getElementById("toScreen4").style.display = "inline-block";
 
-      shootStar(); // ⭐ estrella fugaz al final
+      shootStar(); // ahora ya no borra nada
     }
   }
 
@@ -128,27 +120,27 @@ function shootStar() {
   const ctx = canvas.getContext("2d");
 
   let x = -50;
-  let y = 50;
+  let y = 60;
 
   function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    x += 8;
-    y += 4;
 
     ctx.strokeStyle = "rgba(255,255,255,0.8)";
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 1.5;
+
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.lineTo(x - 20, y - 10);
+    ctx.lineTo(x - 15, y - 8);
     ctx.stroke();
+
+    x += 6;
+    y += 3;
 
     if (x < canvas.width + 50) {
       requestAnimationFrame(animate);
     }
   }
 
-  setTimeout(animate, 500);
+  setTimeout(animate, 600);
 }
 
 function showDiracExplanation() {
